@@ -2,9 +2,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Plus, Play, Pause } from 'lucide-react';
 
-
-
-
 const exampleGraphs = [
   {
     name: "Global Network",
@@ -312,9 +309,9 @@ const Page = () => {
   };
 
   return (
-    <div className="h-screen w-full flex">
+    <div className="h-screen text-white w-full flex">
       {/* Control Panel */}
-      <div className="w-1/4 p-4 bg-black border-r overflow-y-auto">
+      <div className="w-1/4 p-4 bg-gray-900 border-r overflow-y-auto">
         <div className="space-y-6">
           <h1 className="text-2xl font-bold">Bellman-Ford Visualizer</h1>
 
@@ -322,7 +319,7 @@ const Page = () => {
             <label className="block text-sm font-medium mb-2">Examples</label>
             <select
               onChange={(e) => handleExampleChange(e.target.value)}
-              className="w-full p-2 border rounded bg-gray-900"
+              className="w-full p-2  rounded bg-gray-800"
             >
               <option value="">Select an example...</option>
               {exampleGraphs.map((example) => (
@@ -339,7 +336,7 @@ const Page = () => {
               <select
                 value={source}
                 onChange={(e) => setSource(e.target.value)}
-                className="w-full p-2 border bg-gray-900 rounded"
+                className="w-full p-2  bg-gray-800 rounded"
               >
                 {Object.keys(nodePositions).map((node) => (
                   <option key={node} value={node}>{node}</option>
@@ -351,7 +348,7 @@ const Page = () => {
               <select
                 value={destination}
                 onChange={(e) => setDestination(e.target.value)}
-                className="w-full p-2 border bg-gray-900 rounded"
+                className="w-full p-2  bg-gray-800 rounded"
               >
                 {Object.keys(nodePositions).map((node) => (
                   <option key={node} value={node}>{node}</option>
@@ -395,12 +392,12 @@ const Page = () => {
             
             <div className="space-y-2">
               {graph.map((edge, index) => (
-                <div key={index} className="flex gap-2 items-center bg-gray-900 p-2 rounded border">
+                <div key={index} className="flex gap-2 items-center bg-gray-900 text-center p-2 rounded ">
                   <input
                     type="text"
                     value={edge.from}
                     onChange={(e) => updateEdge(index, 'from', e.target.value)}
-                    className="w-20 p-1 border rounded text-sm"
+                    className="w-20 p-1 border rounded text-center text-sm"
                     placeholder="From"
                   />
                   <span>→</span>
@@ -408,14 +405,14 @@ const Page = () => {
                     type="text"
                     value={edge.to}
                     onChange={(e) => updateEdge(index, 'to', e.target.value)}
-                    className="w-20 p-1 border rounded text-sm"
+                    className="w-20 p-1 border rounded text-center text-sm"
                     placeholder="To"
                   />
                   <input
                     type="number"
                     value={edge.weight}
                     onChange={(e) => updateEdge(index, 'weight', e.target.value)}
-                    className="w-16 p-1 border rounded text-sm"
+                    className="w-16 p-1 border text-center rounded text-sm"
                   />
                   <button
                     onClick={() => removeEdge(index)}
@@ -429,7 +426,7 @@ const Page = () => {
           </div>
 
           {result && (
-            <div className="p-4 bg-gray-950 rounded border">
+            <div className="p-4 bg-gray-800 rounded">
               <h3 className="font-semibold mb-2">Results</h3>
               <div className="text-sm space-y-1">
                 <p><span className="font-medium">Path:</span> {result.path.join(' → ')}</p>
