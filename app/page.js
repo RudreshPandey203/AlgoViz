@@ -5,11 +5,11 @@ export default function Home() {
   const algorithms = [
     { name: "Bellman-Ford", href: "/bellman-ford" },
     { name: "Dijkstra's Algorithm", href: "#" },
-    { name: "Floyd-Warshall", href: "#" },
+    { name: "Floyd-Warshall", href: "/floyd-marshall" },
     { name: "A* Search", href: "#" },
     { name: "Kruskal's MST", href: "#" },
     { name: "Prim's MST", href: "#" },
-    { name: "Topological Sort", href: "#" },
+    { name: "Topological Sort", href: "/topological-sort" },
     { name: "DFS & BFS", href: "#" },
     { name: "Tarjan's SCC", href: "#" },
   ];
