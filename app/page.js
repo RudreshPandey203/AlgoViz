@@ -5,7 +5,7 @@ export default function Home() {
   const algorithms = [
     { name: "Bellman-Ford", href: "/bellman-ford" },
     { name: "Dijkstra's Algorithm", href: "#" },
-    { name: "Floyd-Warshall", href: "/floyd-marshall" },
+    { name: "Floyd-Warshall", href: "/floyd-warshall" },
     { name: "A* Search", href: "#" },
     { name: "Kruskal's MST", href: "#" },
     { name: "Prim's MST", href: "#" },

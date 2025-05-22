@@ -26,6 +26,7 @@ export default function FloydWarshallPage() {
 
   const [currentStep, setCurrentStep] = useState({ from: null, to: null, via: null });
   const [distanceMatrix, setDistanceMatrix] = useState({});
+  const [animationSpeed, setAnimationSpeed] = useState(300); // Default 300ms
   const [isProcessing, setIsProcessing] = useState(false);
   const [hasNegativeCycle, setHasNegativeCycle] = useState(false);
   const [selectedExample, setSelectedExample] = useState('example1');
@@ -209,7 +210,7 @@ export default function FloydWarshallPage() {
           const to = nodesList[j];
           
           setCurrentStep({ via, from, to });
-          await new Promise(resolve => setTimeout(resolve, 300));
+          await new Promise(resolve => setTimeout(resolve, animationSpeed));
           
           const newDistance = matrix[from][via] + matrix[via][to];
           
@@ -221,7 +222,7 @@ export default function FloydWarshallPage() {
           }
         }
       }
-      await new Promise(resolve => setTimeout(resolve, 500));
+      await new Promise(resolve => setTimeout(resolve, animationSpeed*1.5));
     }
 
     nodesList.forEach(node => {
@@ -341,12 +342,26 @@ export default function FloydWarshallPage() {
             <div className="bg-gray-700 p-4 rounded-md">
               <h2 className="text-lg font-semibold mb-4">Algorithm Controls</h2>
               <div className="flex gap-2">
+              <div>
+      <label className="block mb-2 text-sm font-medium">
+        Animation Speed: {animationSpeed}ms
+      </label>
+      <input
+        type="range"
+        min="100"
+        max="2000"
+        step="100"
+        value={animationSpeed}
+        onChange={(e) => setAnimationSpeed(Number(e.target.value))}
+        className="w-full"
+      />
+    </div>
                 <button
                   onClick={runFloydWarshall}
                   disabled={isProcessing}
-                  className="flex-1 p-2 bg-blue-600 rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  className="flex-1 p-2 bg-green-500 rounded-md hover:bg-green-700 transition-colors disabled:opacity-50"
                 >
-                  {isProcessing ? 'Processing...' : 'Run Algorithm'}
+                  {isProcessing ? 'Processing...' : 'Start'}
                 </button>
                 <button
                   onClick={resetVisualization}
